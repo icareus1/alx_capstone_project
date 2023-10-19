@@ -1,4 +1,59 @@
 {% extends "layout.html" %}
 {% block content %}
-<button onclick="window.location.href='{{ url_for('login') }}'">Get Started</button>
+<style>
+    body {
+        background: #4070f46c;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #get-started {
+    right: 0px;
+    font-size: 50px;
+    font-weight: 400;
+    color: #fff;
+    border: none;
+    padding: 2px 20px 6px 20px;
+    border-radius: 6px;
+    background-color: #4070f4;
+    cursor: pointer;
+    margin-bottom: 10rem;
+    }
+
+    button {
+        border: 1px solid black;
+    }
+    div {
+        margin-top: 8%;
+        border: 1px solid #7070701e;
+        height: 600px;
+        max-width: 60rem;
+        width: 100%;
+        background: #ffffff;
+        border-radius: 8px;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        padding: 1.5rem 2rem;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    h2, h1 {
+        text-align: center;
+        line-height: 1.65; /* Adjust the line height here */
+        letter-spacing: 2px; /* Adjust the letter spacing here */
+        font-style: italic; /* Italic text */
+
+    }
+</style>
+<div>
+    <h1>
+        Welcome!
+    </h1>
+    <h2>
+        To get started and unlock the full potential of our app, please log in or sign up.
+    </h2>
+    <button id="get-started" onclick="window.location.href='{{ url_for('login') }}'">Get Started</button>
+</div>
+
 {% endblock %}

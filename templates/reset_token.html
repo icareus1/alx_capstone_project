@@ -1,6 +1,19 @@
 {% extends "layout.html" %}
 {% block content %}
-    <div class="content-section">
+<style>
+    body {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #4070f4;
+    }
+    .btn {
+        padding-left: 100%;
+    }
+
+</style>
+    <div class="content-form">
         <form method="POST" action="">
             {{ form.hidden_tag() }}
             <fieldset class="form-group">
