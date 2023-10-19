@@ -1,0 +1,247 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+:root {
+    --clr-primary: #CAF0F8;
+    --clr-light: #fff;
+    --clr-dark: #333;
+    --clr-warning: rgb(99, 36, 36);
+    --spacer: 2rem;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    font-family: inherit;
+    text-decoration: none;
+    list-style: none;
+}
+
+body {
+    margin: 0 15% 0 15%;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+    font-size: 1.6rem;
+    background-color: #1796f8;
+    color: #000;
+}
+
+nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: var(--clr-light);
+    height: 90px;
+    width: 100%;
+    border-bottom: 1px solid #7a7a7a6b;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+nav a {
+    font-size: 1.2rem;
+}
+
+nav #search-bar {
+    border: 1px solid #7070701e;
+    position: relative;
+    height: 42px;
+    max-width: 400px;
+    width: 80%;
+    background: #fff;
+    margin: 0 10rem 0 0;
+    border-radius: 8px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    padding-bottom: 10px;
+}
+
+nav #search-bar i,
+nav #search-bar #clear-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+nav #search-bar i {
+    left: 20px;
+    font-size: 30px;
+    color: #707070;
+}
+
+nav #search-bar input {
+    height: 100%;
+    width: 100%;
+    outline: none;
+    font-size: 18px;
+    font-weight: 400;
+    border: none;
+    padding: 0 6rem 0 5rem;
+    background-color: transparent;
+}
+
+nav #search-bar #clear-button {
+    right: 0px;
+    font-size: 20px;
+    font-weight: 400;
+    color: #fff;
+    border: none;
+    padding: 6px 18px;
+    border-radius: 6px;
+    background-color: #4070f4;
+    cursor: pointer;
+}
+
+p.welcome-msg {
+    font-size: 1.5rem;
+    line-height: 80px;
+    padding: 0 100px;
+    font-weight: bold;
+}
+
+p.welcome-msg span {
+    color: #1796f8;
+}
+
+
+.subtask-hidden {
+    display: none;
+}
+
+.Task-container {
+    padding: 20px;
+    background: #eeeeee;
+    height: 89.3vh;
+    border-radius: 10px;
+}
+
+.search {
+  position: relative;
+}
+
+.subtask-content {
+  position: absolute;
+  top: 5%;
+  right: 0;
+  width: 50%;
+  background: var(--clr-light);
+  height: 70vh;
+  border-radius: 10px;
+}
+
+div.subtask-content .subtask-count{
+    margin: 0;
+    font-size: 1.5rem;
+    padding-bottom: 1rem;
+    color: #1796f8;
+    padding-left: 15rem;
+}
+
+.subtask-list,
+.search {
+  margin: 0;
+  font-size: 1rem;
+  padding: 1rem 0;
+}
+
+.date-interval {
+    margin: 0;
+    padding-bottom: 1rem;
+    color:#1796f8
+}
+
+.task-name {
+    font-size: 1.5rem;
+    color: var(--clr-dark)
+}
+
+.a-task {
+    width: 40%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.subtask-list li a {
+    padding-left: 1rem;
+}
+
+.subtask-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.subtask-list li label {
+    flex-basis:60%;
+    /* flex-grow: 1; */
+}
+
+.disable {
+    text-decoration: line-through;
+}
+
+.completed {
+  text-decoration: line-through;
+}
+
+
+.subtask-list li {
+    padding-bottom: 1rem;
+    padding: 1rem;
+    max-width: 580px;
+    width: 100%;
+    margin-bottom: 0.7rem;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.task-name:focus {
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+div.subtask-content > * {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+
+.subtask-form {
+    border: 1px solid #7070701e;
+    height: 42px;
+    max-width: 600px;
+    width: 100%;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    padding-bottom: 10px;
+    /* padding-left: 1rem; */
+}
+
+.subtask-form input,
+.task-list input {
+    height: 100%;
+    width: 90%;
+    outline: none;
+    font-size: 18px;
+    font-weight: 400;
+    border: none;
+    padding: .5rem 1rem 0 0;
+    background-color: transparent;
+}
+
+
+.btn-submit {
+    right: 0px;
+    font-size: 25px;
+    font-weight: 400;
+    color: #fff;
+    border: none;
+    padding: 1.5px 20px;
+    border-radius: 6px;
+    background-color: #4070f4;
+    cursor: pointer;
+}

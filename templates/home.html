@@ -1,0 +1,70 @@
+{% extends "layout.html" %}
+{% block content %}
+<section class="Task-container">
+    {% if tasks %}
+    <h1 class="container">My Tasks</h1clas>
+        <ul class="search">
+            {% for task in tasks %}
+                <li class="task-list">
+                    <div class="a-task">
+                        <a href="#" data-task-id="{{ task.id }}" class="task-name"
+                        onclick="getCurrentTaskId(this)">{{ task.name }}</a>
+                        <div class="edit-delete">
+                            <a href="#" class="font-size" onclick="editTaskName('{{ task.id }}')">Edit</a>
+                            <a href="#" class="font-size" onclick="deleteTask('{{ task.id }}')" class="delete-anchor">Delete</a>
+                        </div>
+                    </div>
+
+                    <div id="editing-{{ task.id }}" class="subtask-hidden">
+                        <input type="text" class="edit-input">
+                        <button class="save-button">Save</button>
+                    </div>
+                    <p class="date-interval">
+                        {{ task.creation_date.strftime('%d/%m/%Y') }} - {{ task.due_date.strftime('%d/%m/%Y') }}
+                    </p>
+                </li>
+                <div class="subtask-content" id="subtask-content-{{ task.id }}">
+                    <h2 class="list-title-{{ task.id }}"></h2>
+                    <p class="subtask-count task-{{ task.id }} subtask-hidden"></p>
+                    
+                    <!-- F.Task-containerorm for adding subtasks -->
+                    <form action="" class="subtask-form subtask-hidden" id="subtask-form-{{ task.id }}">
+                        <input type="text" id="subtask-name-{{ task.id }}" name="subtask-name" placeholder="Enter the subtask" required>
+                        <button class="btn-submit" onclick="createSubtask('{{ task.id }}')">+</button>
+                    </form>
+                    
+                    <!-- Display existing subtasks --> 
+                    <ul class="subtask-list subtask-hidden" id="subtask-list-{{ task.id }}">
+                        {% for subtask in task.subtasks %}
+                            <li>
+                                <input class="subtask-checkbox" type="checkbox" id="status-check-{{ subtask.id }}"
+                                onchange="toggleTaskStatus('{{ subtask.id }}')" {% if subtask.status %}checked{% endif %}>
+                                <label for="status-check-{{ subtask.id }}" id="subtask-name-{{ subtask.id }}"
+                                class="subtask-label {% if subtask.status %}completed{% endif %}">
+                                {{ subtask.name }}</label>
+                                <a href="#" onclick="editSubtaskName('{{ subtask.id }}')">Edit</a>
+                                <a href="#" onclick="deleteSubtask('{{ subtask.id }}')">Delete</a>
+                                <div id="editing-{{ subtask.id }}" class="subtask-hidden">
+                                    <input type="text" class="edit-input">
+                                    <button class="save-button" onclick="saveTaskName('{{ subtask.id }}')">Save</button>
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No task. Add a new one.</p>
+    {% endif %}
+    <div class="task-form">
+        <input type="button" class="btn-submit" value="Add new task" onclick="toggleT()">
+        <form class="show-form subtask-hidden" >
+            <input type="text" name="task-name" id="task-name"
+                placeholder="Enter the name of the task you wish to create" required/>
+            <input type="date" name="due-date" id="due-date" required>
+            <button class="btn-submit" onclick="createTask()">+</button>
+        </form>
+    </div>
+</section>
+{% endblock %}

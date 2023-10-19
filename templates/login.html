@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="content-section">
+        <form action="" method="POST">
+            {{ form.hidden_tag() }}
+            <fieldset class="form-group">
+                <legend class="legend">
+                    Login
+                </legend>
+                <div class="form-content">
+                    {{ form.email.label(class="form-control-label") }}
+
+                    {% if form.email.errors %}
+                        {{ form.email(class='form-control-field') }}
+                        <div class="invalid-feedback">
+                            {% for error in form.email.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.email(class='form-control-field') }}
+                    {% endif %}
+
+                    {{ form.password.label(class="form-control-label") }}
+
+                    {% if form.password.errors %}
+                        {{ form.password(class='form-control-field') }}
+                        <div class="invalid-feedback">
+                            {% for error in form.password.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.password(class='form-control-field') }}
+                    {% endif %}
+
+                    <div class="form-check">
+                        {{ form.remember(class="form-check-input") }}
+                        {{ form.remember.label(class="form-check-label") }}
+                    </div>
+                    {{ form.submit(class='submit-btn') }}
+                </div>
+            </fieldset>
+            <div class="login-check">
+                <p><a href="{{ url_for('reset_request') }}">Forgot Password?</a></p>
+            </div>
+        </form>
+    </div>
+
+    <div class="login-check">
+        <p>Don't have an account yet ? <a href="{{ url_for('register') }}">Sign Up</a></p>
+    </div>
+{% endblock %}
