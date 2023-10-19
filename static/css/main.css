@@ -221,8 +221,7 @@ div.subtask-content > * {
     /* padding-left: 1rem; */
 }
 
-.subtask-form input,
-.task-list input {
+.subtask-form input {
     height: 100%;
     width: 90%;
     outline: none;
@@ -244,4 +243,27 @@ div.subtask-content > * {
     border-radius: 6px;
     background-color: #4070f4;
     cursor: pointer;
+}
+
+.my-task {
+    border: 1px solid #7070701e;
+    height: 100px;
+    max-width: 600px;
+    width: 100%;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem 2rem;
+}
+
+.task-list {
+    border: 1px solid #7070701e;
+    height: 120px;
+    max-width: 580px;
+    width: 100%;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem 2rem;
+    margin-bottom: 20px;
 }
