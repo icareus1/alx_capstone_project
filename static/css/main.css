@@ -40,6 +40,8 @@ nav {
 
 nav a {
     font-size: 1.2rem;
+    flex-basis: fit-content;
+    padding: 0 5rem;
 }
 
 nav #search-bar {
@@ -47,25 +49,22 @@ nav #search-bar {
     position: relative;
     height: 42px;
     max-width: 400px;
-    width: 80%;
+    width: 100%;
     background: #fff;
-    margin: 0 10rem 0 0;
     border-radius: 8px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-    padding-bottom: 10px;
 }
 
-nav #search-bar i,
-nav #search-bar #clear-button {
+nav #search-bar i {
     position: absolute;
     top: 50%;
-    transform: translateY(-50%);
 }
 
 nav #search-bar i {
     left: 20px;
     font-size: 30px;
     color: #707070;
+    transform: translateY(-31%);
 }
 
 nav #search-bar input {
@@ -89,11 +88,13 @@ nav #search-bar #clear-button {
     border-radius: 6px;
     background-color: #1796f8;
     cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 p.welcome-msg {
     font-size: 1.5rem;
-    line-height: 80px;
     padding: 0 100px;
     font-weight: bold;
 }
@@ -104,13 +105,12 @@ p.welcome-msg span {
 
 
 .subtask-hidden {
-    display: none;
+    display: none !important;
 }
 
 .Task-container {
     padding: 20px;
-    background: #eeeeee;
-    height: 89.3vh;
+    height: fit-content;
     border-radius: 10px;
 }
 
@@ -124,7 +124,7 @@ p.welcome-msg span {
   right: 0;
   width: 50%;
   background: var(--clr-light);
-  height: 65vh;
+  height: fit-content;
   border-radius: 10px;
 }
 
@@ -165,13 +165,6 @@ div.subtask-content .subtask-count{
     padding-left: 1rem;
 }
 
-.subtask-list li {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-}
-
 .subtask-list li label {
     flex-basis:60%;
     /* flex-grow: 1; */
@@ -187,9 +180,13 @@ div.subtask-content .subtask-count{
 
 
 .subtask-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
     padding-bottom: 1rem;
     padding: 1rem;
-    max-width: 580px;
+    max-width: 32vw;
     width: 100%;
     margin-bottom: 0.7rem;
     background: #fff;
@@ -205,20 +202,17 @@ div.subtask-content .subtask-count{
 div.subtask-content > * {
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;
 }
 
 
 .subtask-form {
     border: 1px solid #7070701e;
-    height: 42px;
-    max-width: 600px;
+    max-width: 32vw;
     width: 100%;
     background: #fff;
     border-radius: 8px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-    padding-bottom: 10px;
-    /* padding-left: 1rem; */
+    margin-left: 0.5rem;
 }
 
 .subtask-form input {
@@ -249,7 +243,7 @@ div.subtask-content > * {
     border: 1px solid #7070701e;
     height: 100px;
     max-width: 600px;
-    width: 100%;
+    width: 49%;
     background: #fff;
     border-radius: 8px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
@@ -258,13 +252,12 @@ div.subtask-content > * {
 
 .task-list {
     border: 1px solid #7070701e;
-    height: 120px;
-    max-width: 580px;
+    max-width: 33vw;
     width: 100%;
     background: #fff;
     border-radius: 8px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-    padding: 1.5rem 2rem;
+    padding: 1rem 2rem 0.5rem;
     margin-bottom: 20px;
 }
 
@@ -302,6 +295,7 @@ div.subtask-content > * {
     padding: 1.5rem 4.9rem;
     border-radius: 10px;
     border: 2px solid black;
+    margin-bottom: .2rem;
 }
 
 .content-form .form-group .legend {
@@ -329,13 +323,14 @@ div.subtask-content > * {
     color: #f4f4f4;
 }
 
-.login-check a:hover{
+a:hover,
+button:hover {
     color: #ff0000;
     font-weight: 600;
 }
 
 .content-form form {
-    height: 60vh;
+    margin-bottom: .2rem;
     max-width: 900px;
     width: 100%;
 
@@ -346,54 +341,50 @@ div.subtask-content > * {
 }
 
 .content-form-registration form .form-group-registration {
-    max-width: 426px;
-    width: 100%;
+    height: 100%;
+    max-width: 50vw;
+    width: 99%
 
 }
 
 .content-form-registration .form-group-registration {
-    width: 50%;
     background-color: #fff;
     transition: margin-left 0.18s ease;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    padding: 1rem 4rem;
+    padding-bottom: 5rem;
     border-radius: 10px;
     border: 2px solid black;
+    margin-bottom: .2rem;
 }
 
 .form-group-registration .form-content .form-control-field {
     border: 1px solid #7070701e;
     height: 2rem;
-    width: 16.6rem;
+    width: 16rem;
     background: #fff;
     border-radius: 8px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-    padding: 1.5rem 2rem;
-    margin-bottom: 20px
+    padding: 1.5rem 1rem;
+    margin-bottom: 20px;
 }
 
 .content-form-registration form {
-    height: 65vh;
-    max-width: 900px;
+    height: 100%;
+    max-width: 50vw;
     width: 100%;
 
 }
 
 .content-form-registration {
-    max-width: 430px;
+    max-width: 50.4vw;
     width: 100%;
     background: #fff;
     border-radius: 10px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
     overflow: hidden;
-    margin: 0 20px;
 }
 
 .content-form-registration .form-group {
     width: 60%;
-    /* padding: 30px; */
     background-color: #fff;
     transition: margin-left 0.18s ease;
     display: flex;
@@ -403,7 +394,8 @@ div.subtask-content > * {
     border: 2px solid black;
 }
 
-.content-form-registration .form-group-registration legend {
+.content-form-registration .form-group-registration legend,
+.legend {
     position: relative;
     font-size: 30px;
     font-weight: 600;
@@ -424,21 +416,9 @@ div.subtask-content > * {
     font-weight: 600;
 }
 
-.submit-btn {
-    right: 0px;
-    font-size: 20px;
-    font-weight: 400;
-    color: #fff;
-    border: none;
-    padding: 6px 25px 6px;
-    border-radius: 6px;
-    background-color: #1796f8;
-    cursor: pointer;
-    margin-left: 4rem;
-    margin-top: 2rem;
-}
 
-.submit-btn-register {
+.submit-btn-register,
+.submit-btn  {
     right: 0px;
     font-size: 20px;
     font-weight: 400;
@@ -448,7 +428,6 @@ div.subtask-content > * {
     border-radius: 6px;
     background-color:#1796f8;
     cursor: pointer;
-    margin-left: 4rem;
     margin-top: .2rem;
 }
 
@@ -539,4 +518,38 @@ div.subtask-content > * {
     background-color: #1797f8;
     cursor: pointer;
     margin: 22rem auto;
+}
+
+.form-content {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+ul .subtask-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#add-subtask {
+    font-size: 30px;
+    font-weight: 400;
+    color: #fff;
+    border: none;
+    padding: 3px 20px 0;
+    border-radius: 6px;
+    background-color: #1796f8;
+    cursor: pointer;
+}
+
+.task-form {
+    border: 1px solid #7070701e;
+    max-width: 33vw;
+    width: 100%;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    padding: 1rem 2rem;
 }

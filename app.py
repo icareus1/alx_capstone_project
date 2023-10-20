@@ -82,7 +82,7 @@ def new_task():
     new_task = Task(name=data['name'], due_date=data['due_date'], user_id=current_user.id)
     db.session.add(new_task)
     db.session.commit()
-    return jsonify
+    return jsonify({'message': 'Subtask created successfully'})
     return redirect(url_for('home'))
 
 @app.route('/subtask/new', methods=['POST'])

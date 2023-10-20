@@ -27,10 +27,10 @@
                     <h2 class="list-title-{{ task.id }}"></h2>
                     <p class="subtask-count task-{{ task.id }} subtask-hidden"></p>
                     
-                    <!-- F.Task-containerorm for adding subtasks -->
+                    <!-- Task-container for adding subtasks -->
                     <form action="" class="subtask-form subtask-hidden" id="subtask-form-{{ task.id }}">
                         <input type="text" id="subtask-name-{{ task.id }}" name="subtask-name" placeholder="Enter the subtask" required>
-                        <button class="btn-submit" onclick="createSubtask('{{ task.id }}')">+</button>
+                        <button id="add-subtask" onclick="createSubtask('{{ task.id }}')"><span>+</span></button>
                     </form>
                     
                     <!-- Display existing subtasks --> 
@@ -55,7 +55,7 @@
             {% endfor %}
         </ul>
     {% else %}
-        <p>No task. Add a new one.</p>
+        <p style="color: #fff; font-weight: bold; font-size: 3rem;">No task. Add a new one.</p>
     {% endif %}
     <div class="task-form">
         <input type="button" class="btn-submit" value="Add new task" onclick="toggleT()">

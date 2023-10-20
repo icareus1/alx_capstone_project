@@ -1,41 +1,41 @@
-    let currentTaskId;
+let currentTaskId = null;
 
-    function createTask() {
-        let name = document.getElementById("task-name").value;
-        let dueDate = document.getElementById("due-date").value;
+function createTask() {
+    let name = document.getElementById("task-name").value;
+    let dueDate = document.getElementById("due-date").value;
 
-        fetch('/task/new', {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                name: name,
-                due_date: dueDate,
-            }),
-        })
-        .then((response) => {
-            if (response.ok) {
-                return response.json();
-            } else {
-                throw new Error("Error: " + response.statusText);
-            }
-        })
-        .then((responseJson) => {
-            console.log(responseJson.message);
-            location.reload();
-        })
-        .catch((error) => {
-            console.log("Error:", error);
-        });
-    }
+    fetch('/task/new', {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            name: name,
+            due_date: dueDate,
+        }),
+    })
+    .then((response) => {
+        if (response.ok) {
+            return response.json();
+        } else {
+            throw new Error("Error: " + response.statusText);
+        }
+    })
+    .then((responseJson) => {
+        console.log(responseJson.message);
+    })
+    .catch((error) => {
+        console.log("Error:", error);
+    });
+}
 
-    function getCurrentTaskId(element) {
-      currentTaskId = element.dataset.taskId; // Set 'currentTaskId' when a task is clicked
-      //   showSubtaskForm(currentTaskId); // Show subtasks when a task is selected
-      toggleSubtasks(currentTaskId);
-    }
+function getCurrentTaskId(element) {
+    currentTaskId = element.dataset.taskId; // Set 'currentTaskId' when a task is clicked
+    // Show subtasks when a task is selected
+    toggleSubtasks(currentTaskId);
+}
 
+// Store the value of the select task and make the other tasks content invisible
 function toggleSubtasks(currentTaskId) {
     const subtaskForm = document.getElementById(`subtask-form-${currentTaskId}`);
     const subtaskList = document.getElementById(`subtask-list-${currentTaskId}`);
@@ -101,6 +101,7 @@ function createSubtask(currentTaskId) {
     });
 }
 
+// Task completion status toggle
 function toggleTaskStatus(subtaskId) {
     const label = document.getElementById(`subtask-name-${subtaskId}`);
     const checkbox = document.getElementById(`status-check-${subtaskId}`);
@@ -126,6 +127,7 @@ function toggleTaskStatus(subtaskId) {
     });
 }
 
+// Add task toggle
 function toggleT() {
     const formToggle = document.querySelector(".show-form");
     formToggle.classList.toggle("subtask-hidden");
@@ -229,24 +231,24 @@ function saveTaskName(subtaskId) {
         },
         body: JSON.stringify({ new_name: newName }),
     })
-        .then((response) => {
-            if (response.ok) {
-                return response.json();
-            } else {
-                throw new Error("Error: " + response.statusText);
-            }
-        })
-        .then((responseJson) => {
-            console.log(responseJson);
-            const subtaskNameElement = document.querySelector(
-            `#subtask-name-${subtaskId}`
-            );
-            subtaskNameElement.textContent = newName;
-            editDiv.classList.add("subtask-hidden");
-        })
-        .catch((error) => {
-            console.log("Error:", error);
-        });
+    .then((response) => {
+        if (response.ok) {
+            return response.json();
+        } else {
+            throw new Error("Error: " + response.statusText);
+        }
+    })
+    .then((responseJson) => {
+        console.log(responseJson);
+        const subtaskNameElement = document.querySelector(
+        `#subtask-name-${subtaskId}`
+        );
+        subtaskNameElement.textContent = newName;
+        editDiv.classList.add("subtask-hidden");
+    })
+    .catch((error) => {
+        console.log("Error:", error);
+    });
 }
 
 // Delete task
@@ -261,17 +263,17 @@ function deleteTask(currentTaskId) {
                 "Content-Type": "application/json",
             },
         })
-            .then((response) => {
-                if (response.ok) {
-                    // Reload the page after successful deletion
-                    location.reload();
-                } else {
-                    throw new Error("Error: " + response.statusText);
-                }
-            })
-            .catch((error) => {
-                console.log("Error:", error);
-            });
+        .then((response) => {
+            if (response.ok) {
+                // Reload the page after successful deletion
+                location.reload();
+            } else {
+                throw new Error("Error: " + response.statusText);
+            }
+        })
+        .catch((error) => {
+            console.log("Error:", error);
+        });
     }
 }
 
@@ -287,17 +289,17 @@ function deleteSubtask(subtaskId) {
                 "Content-Type": "application/json",
             },
         })
-            .then((response) => {
-                if (response.ok) {
-                  // Reload the page after successful deletion
-                    location.reload();
-                } else {
-                    throw new Error("Error: " + response.statusText);
-                }
-            })
-            .catch((error) => {
-                console.log("Error:", error);
-            });
+        .then((response) => {
+            if (response.ok) {
+              // Reload the page after successful deletion
+                location.reload();
+            } else {
+                throw new Error("Error: " + response.statusText);
+            }
+        })
+        .catch((error) => {
+            console.log("Error:", error);
+        });
     }
 }
 
@@ -317,7 +319,7 @@ function searchTasks() {
     });
     }
 
-    function clearSearch() {
+function clearSearch() {
     const searchInput = document.getElementById("search-input");
     searchInput.value = ""; // Clear the input field
 
@@ -355,7 +357,7 @@ function calculateRemainingDays() {
         task.classList.add("disabled");
 
         // Disable all anchor elements within the task except the delete anchor
-        const anchors = task.querySelectorAll("a");
+        const anchors = task.querySelectorAll("div a");
         anchors.forEach((anchor) => {
             if (!anchor.classList.contains("delete-anchor")) {
             anchor.onclick = (event) => event.preventDefault();
