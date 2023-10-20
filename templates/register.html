@@ -6,14 +6,13 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background-color: #4070f4;
+        background-color: #1796f8;
     }
-
 </style>
-    <div class="content-form">
+    <div class="content-form-registration">
         <form action="" method="POST">
             {{ form.hidden_tag() }}
-            <fieldset class="form-group">
+            <fieldset class="form-group-registration">
                 <legend class="legend">
                     Register
                 </legend>
@@ -70,7 +69,7 @@
                         {{ form.confirm_password(class='form-control-field') }}
                     {% endif %}
 
-                    {{ form.submit(class='submit-btn') }}
+                    {{ form.submit(class='submit-btn-register') }}
                 </div>
             </fieldset>
         </form>

@@ -87,7 +87,7 @@ nav #search-bar #clear-button {
     border: none;
     padding: 6px 18px;
     border-radius: 6px;
-    background-color: #4070f4;
+    background-color: #1796f8;
     cursor: pointer;
 }
 
@@ -241,7 +241,7 @@ div.subtask-content > * {
     border: none;
     padding: 1.5px 20px;
     border-radius: 6px;
-    background-color: #4070f4;
+    background-color: #1796f8;
     cursor: pointer;
 }
 
@@ -269,8 +269,7 @@ div.subtask-content > * {
 }
 
 .task-list div button,
-.save-button,
-.btn {
+.save-button {
     right: 0px;
     font-size: 20px;
     font-weight: 400;
@@ -278,7 +277,7 @@ div.subtask-content > * {
     border: none;
     padding: 2px 20px 6px 20px;
     border-radius: 6px;
-    background-color: #4070f4;
+    background-color: #1796f8;
     cursor: pointer;
 }
 
@@ -294,25 +293,32 @@ div.subtask-content > * {
 }
 
 .content-form .form-group {
-    width: 50%;
-    padding: 30px;
+    width: 60%;
     background-color: #fff;
     transition: margin-left 0.18s ease;
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
+    padding: 1.5rem 4.9rem;
+    border-radius: 10px;
+    border: 2px solid black;
 }
 
 .content-form .form-group .legend {
     position: relative;
-    font-size: 27px;
+    font-size: 30px;
     font-weight: 600;
 }
 
-.form-control-form-control-field {
-    position: relative;
-    height: 50px;
-    width: 100%;
-    margin-top: 30px;
+.form-content .form-control-field {
+    border: 1px solid #7070701e;
+    height: 2rem;
+    width: 16.6rem;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem 2rem;
+    margin-bottom: 20px
 }
 
 .login-check {
@@ -320,5 +326,217 @@ div.subtask-content > * {
 }
 
 .login-check a {
+    color: #f4f4f4;
+}
+
+.login-check a:hover{
     color: #ff0000;
+    font-weight: 600;
+}
+
+.content-form form {
+    height: 60vh;
+    max-width: 900px;
+    width: 100%;
+
+}
+
+.content-form form fieldset .form-group {
+    margin-left:100rem;
+}
+
+.content-form-registration form .form-group-registration {
+    max-width: 426px;
+    width: 100%;
+
+}
+
+.content-form-registration .form-group-registration {
+    width: 50%;
+    background-color: #fff;
+    transition: margin-left 0.18s ease;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 1rem 4rem;
+    border-radius: 10px;
+    border: 2px solid black;
+}
+
+.form-group-registration .form-content .form-control-field {
+    border: 1px solid #7070701e;
+    height: 2rem;
+    width: 16.6rem;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem 2rem;
+    margin-bottom: 20px
+}
+
+.content-form-registration form {
+    height: 65vh;
+    max-width: 900px;
+    width: 100%;
+
+}
+
+.content-form-registration {
+    max-width: 430px;
+    width: 100%;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin: 0 20px;
+}
+
+.content-form-registration .form-group {
+    width: 60%;
+    /* padding: 30px; */
+    background-color: #fff;
+    transition: margin-left 0.18s ease;
+    display: flex;
+    justify-content: center;
+    padding: 4.5rem 4.9rem;
+    border-radius: 10px;
+    border: 2px solid black;
+}
+
+.content-form-registration .form-group-registration legend {
+    position: relative;
+    font-size: 30px;
+    font-weight: 600;
+
+}
+
+
+.login-check-forgot {
+    color: var(--clr-light);
+}
+
+.login-check-forgot a {
+    color: #1796f8;
+}
+
+.login-check-forgot a:hover{
+    color: #ff0000;
+    font-weight: 600;
+}
+
+.submit-btn {
+    right: 0px;
+    font-size: 20px;
+    font-weight: 400;
+    color: #fff;
+    border: none;
+    padding: 6px 25px 6px;
+    border-radius: 6px;
+    background-color: #1796f8;
+    cursor: pointer;
+    margin-left: 4rem;
+    margin-top: 2rem;
+}
+
+.submit-btn-register {
+    right: 0px;
+    font-size: 20px;
+    font-weight: 400;
+    color: #fff;
+    border: none;
+    padding: 6px 25px 6px;
+    border-radius: 6px;
+    background-color:#1796f8;
+    cursor: pointer;
+    margin-left: 4rem;
+    margin-top: .2rem;
+}
+
+
+.btn {
+    right: 0px;
+    font-size: 20px;
+    font-weight: 400;
+    color: #fff;
+    border: none;
+    padding: 6px 25px 6px;
+    border-radius: 6px;
+    background-color:#1796f8;
+    cursor: pointer;
+    margin-left: 3rem;
+    margin-top: 1rem;
+}
+
+.content-form fieldset .form-group-request {
+    height: 35vh;
+    max-width: 900px;
+    width: 100%;
+}
+
+.content-form fieldset {
+    border-radius: 6px;
+}
+
+.content-form fieldset .form-group-request-form input {
+    max-width: 430px;
+    width: 90%;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin: 10px 20px;
+    height: 2.5rem;
+}
+
+.content-form fieldset .form-group-request-form,
+.content-form fieldset .form-group-reset-form {
+    padding-top: 3rem;
+}
+
+.content-form fieldset .form-group-request-form .form-group-request .btn {
+    width: 50%;
+}
+
+.form-group-reset-fieldset {
+    height: 59.5vh;
+    max-width: 426px;
+    width: 100%;
+}
+
+.content-form fieldset .form-group-reset-form input {
+    max-width: 430px;
+    width: 90%;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin: 10px 20px;
+    height: 2.5rem;
+}
+
+.btn-reset {
+    font-size: 20px;
+    font-weight: 400;
+    color: #fff;
+    border: none;
+    padding: 10px 30px;
+    border-radius: 6px;
+    background-color: #1796f8;
+    cursor: pointer;
+    margin-left: 4.6rem;
+    margin-top: 2rem;
+}
+
+#get-started {
+    right: 0px;
+    font-size: 50px;
+    font-weight: 400;
+    width: 100%;
+    color: #fff;
+    border: none;
+    padding: 10px 30px;
+    border-radius: 10px;
+    background-color: #1797f8;
+    cursor: pointer;
+    margin: 37rem auto;
 }

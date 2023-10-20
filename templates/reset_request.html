@@ -6,19 +6,15 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background-color: #4070f4;
+        background-color: #1796f8;
     }
-    .btn {
-        padding-left: 100%;
-    }
-
 </style>
     <div class="content-form">
         <form method="POST" action="">
             {{ form.hidden_tag() }}
-            <fieldset class="form-group">
+            <fieldset class="form-group-request-fieldset">
                 <legend class="">Reset Password</legend>
-                <div class="form-group">
+                <div class="form-group-request-form">
                     {{ form.email.label(class="form-control-label") }}
                     {% if form.email.errors %}
                         {{ form.email(class="form-control-is-invalid") }}
@@ -31,10 +27,11 @@
                         {{ form.email(class="form-control") }}
                     {% endif %}
                 </div>
+                <div class="form-group-request">
+                    {{ form.submit(class="btn") }}
+                </div>
             </fieldset>
-            <div class="form-group">
-                {{ form.submit(class="btn") }}
-            </div>
+
         </form>
     </div>
 {% endblock content %}
