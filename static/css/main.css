@@ -115,17 +115,17 @@ p.welcome-msg span {
 }
 
 .search {
-  position: relative;
+    position: relative;
 }
 
 .subtask-content {
-  position: absolute;
-  top: 5%;
-  right: 0;
-  width: 50%;
-  background: var(--clr-light);
-  height: fit-content;
-  border-radius: 10px;
+    position: absolute;
+    top: 5%;
+    right: 0;
+    width: 50%;
+    background: var(--clr-light);
+    height: fit-content;
+    border-radius: 10px;
 }
 
 div.subtask-content .subtask-count{
@@ -138,9 +138,9 @@ div.subtask-content .subtask-count{
 
 .subtask-list,
 .search {
-  margin: 0;
-  font-size: 1rem;
-  padding: 1rem 0;
+    margin: 0;
+    font-size: 1rem;
+    padding: 1rem 0;
 }
 
 .date-interval {
@@ -167,11 +167,11 @@ div.subtask-content .subtask-count{
 
 .subtask-list li label {
     flex-basis:60%;
-    /* flex-grow: 1; */
 }
 
-.disable {
-    text-decoration: line-through;
+.disable,
+.disabled {
+    text-decoration: line-through !important;
 }
 
 .completed {
@@ -194,9 +194,10 @@ div.subtask-content .subtask-count{
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }
 
-.task-name:focus {
+.active-task {
     font-size: 2rem;
     font-weight: 600;
+    color: #ff0000;
 }
 
 div.subtask-content > * {
@@ -323,8 +324,7 @@ div.subtask-content > * {
     color: #f4f4f4;
 }
 
-a:hover,
-button:hover {
+a:hover {
     color: #ff0000;
     font-weight: 600;
 }
@@ -552,4 +552,72 @@ ul .subtask-list {
     border-radius: 8px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
     padding: 1rem 2rem;
+}
+
+.btn-submit:hover,
+.save-button:hover,
+#add-subtask:hover,
+#get-started:hover,
+.submit-btn:hover,
+.submit-btn-register:hover,
+.btn:hover,
+.btn-reset:hover,
+#clear-button:hover {
+    font-weight: 600;
+    opacity: 0.8;
+    background-color: #ff0000;
+}
+
+.invalid-feedback span {
+    color: #ff0000;
+}
+
+.flash-alert-success {
+    color: #3c763d;
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    width: 80%;
+    text-align: center;
+    margin-left:1rem
+}
+
+.flash-alert-danger {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    width: 61%;
+    text-align: center;
+}
+
+.flash-alert-info {
+    color: #0c5460;
+    background-color: #d1ecf1;
+    border-color: #bee5eb;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    width: 57%;
+    text-align: center;
+}
+
+.flash-alert-warning {
+    color: #856404;
+    background-color: #fff3cd;
+    border-color: #ffeeba;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    width: 100%;
+    margin-left: 0.2rem;
+    text-align: center;
 }

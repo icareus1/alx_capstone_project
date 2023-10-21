@@ -1,6 +1,7 @@
 let currentTaskId = null;
 
-function createTask() {
+function createTask(event) {
+    event.stopPropagation();
     let name = document.getElementById("task-name").value;
     let dueDate = document.getElementById("due-date").value;
 
@@ -23,6 +24,7 @@ function createTask() {
     })
     .then((responseJson) => {
         console.log(responseJson.message);
+        location.reload();
     })
     .catch((error) => {
         console.log("Error:", error);
@@ -30,7 +32,17 @@ function createTask() {
 }
 
 function getCurrentTaskId(element) {
-    currentTaskId = element.dataset.taskId; // Set 'currentTaskId' when a task is clicked
+    // Set 'currentTaskId' when a task is clicked
+    currentTaskId = element.dataset.taskId;
+
+    // Remove the active-task class from all tasks
+    const allTasks = document.querySelectorAll(".task-name");
+    allTasks.forEach((task) => {
+        task.classList.remove("active-task");
+    });
+
+    // Add the active-task class to the clicked task
+    element.classList.add("active-task");
     // Show subtasks when a task is selected
     toggleSubtasks(currentTaskId);
 }
@@ -70,7 +82,8 @@ function toggleSubtasks(currentTaskId) {
 }
 
 
-function createSubtask(currentTaskId) {
+function createSubtask(currentTaskId, event) {
+    event.stopPropagation();
     const subtaskName = document.getElementById(
     `subtask-name-${currentTaskId}`
     ).value;
@@ -134,24 +147,31 @@ function toggleT() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  // When the page loads, retrieve and apply the state for the current task
-  const currentTaskState = localStorage.getItem("currentTaskState");
-  if (currentTaskState) {
-    const { taskId } = JSON.parse(currentTaskState);
-    toggleSubtasks(taskId); // Apply the state for the current task
-  }
+        // When the page loads, retrieve and apply the state for the current task
+    const currentTaskState = localStorage.getItem("currentTaskState");
+    if (currentTaskState) {
+        const { taskId } = JSON.parse(currentTaskState);
+        // Apply the state for the current task
+        toggleSubtasks(taskId);
 
-  // Get the date input element
-  const dueDateInput = document.getElementById("due-date");
+        // Apply the active-task class to the last active task
+        const lastActiveTask = document.querySelector(
+        `.task-name[data-task-id="${taskId}"]`
+        );
+        lastActiveTask.classList.add("active-task");
+    }
 
-  // Get the current date in the format "yyyy-mm-dd"
-  const currentDate = new Date().toISOString().split("T")[0];
+    // Get the date input element
+    const dueDateInput = document.getElementById("due-date");
 
-  // Set the min attribute to the current date
-  dueDateInput.setAttribute("min", currentDate);
+    // Get the current date in the format "yyyy-mm-dd"
+    const currentDate = new Date().toISOString().split("T")[0];
 
-  // Call the function to calculate and update remaining days
-  calculateRemainingDays();
+    // Set the min attribute to the current date
+    dueDateInput.setAttribute("min", currentDate);
+
+    // Call the function to calculate and update remaining days
+    calculateRemainingDays();
 });
 
 //Edit task
@@ -353,23 +373,48 @@ function calculateRemainingDays() {
 
 
         if (remainingDays <= 0) {
-        // Disable the task and subtasks
-        task.classList.add("disabled");
+            // Disable the task and subtasks
+            task.classList.add("disabled");
 
-        // Disable all anchor elements within the task except the delete anchor
-        const anchors = task.querySelectorAll("div a");
-        anchors.forEach((anchor) => {
-            if (!anchor.classList.contains("delete-anchor")) {
-            anchor.onclick = (event) => event.preventDefault();
-            anchor.style.pointerEvents = "none";
-            }
-        });
+            // Disable all anchor elements within the task except the delete anchor
+            const anchors = task.querySelectorAll(".anchor");
+            anchors.forEach((anchor) => {
+                if (!anchor.classList.contains("delete-anchor")) {
+                    anchor.onclick = (event) => event.preventDefault();
+                    anchor.style.pointerEvents = "none";
+                }
+            });
 
-        // Disable all input elements within the task
-        const inputs = task.querySelectorAll("input");
-        inputs.forEach((input) => {
-            input.disabled = true;
-        });
+            // Disable all input elements within the task
+            const inputs = task.querySelectorAll("input");
+            inputs.forEach((input) => {
+                input.disabled = true;
+            });
+            // Find and disable the associated subtasks
+            const taskId = task.querySelector(".task-name").dataset.taskId;
+            const subtaskContainer = document.getElementById(
+                `subtask-content-${taskId}`
+            );
+
+            subtaskContainer.classList.add("subtask-hidden");
+            // Disable all anchor elements within the subtask container
+            const subtaskAnchors = subtaskContainer.querySelectorAll(".anchor-s");
+            subtaskAnchors.forEach((anchor) => {
+                anchor.onclick = (event) => event.preventDefault();
+                anchor.style.pointerEvents = "none";
+            });
+
+            // Disable all input elements within the subtask container
+            const subtaskInputs = subtaskContainer.querySelectorAll("input");
+            subtaskInputs.forEach((input) => {
+                input.disabled = true;
+            });
+
+            // Disable the button within the subtask container
+            const subtaskButtons = subtaskContainer.querySelectorAll("button");
+            subtaskButtons.forEach((button) => {
+                button.disabled = true;
+            });
         }
     });
 }
