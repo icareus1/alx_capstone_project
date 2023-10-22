@@ -31,7 +31,7 @@
                     <form action="" class="subtask-form subtask-hidden" id="subtask-form-{{ task.id }}">
                         <input type="text" id="subtask-name-{{ task.id }}" 
                         name="subtask-name" placeholder="Enter the subtask" required>
-                        <button id="add-subtask" onclick="createSubtask('{{ task.id }}', event)"><span>+</span></button>
+                        <button id="add-subtask" onclick="createSubtask('{{ task.id }}', event)"><span>&#10010;</span></button>
                     </form>
                     
                     <!-- Display existing subtasks --> 
@@ -64,7 +64,7 @@
             <input type="text" name="task-name" id="task-name"
                 placeholder="Enter the name of the task you wish to create" required/>
             <input type="date" name="due-date" id="due-date" required>
-            <button class="btn-submit" onclick="createTask(event)">+</button>
+            <button class="btn-submit" onclick="createTask(event)">&#10010;</button>
         </form>
     </div>
 </section>

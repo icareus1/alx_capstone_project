@@ -160,7 +160,7 @@ div.subtask-content .subtask-count{
 }
 
 .subtask-list li label {
-    flex-basis:60%;
+    flex-basis:80%;
 }
 
 a.font-size.delete-anchor {
