@@ -10,13 +10,13 @@
                         <a href="#" data-task-id="{{ task.id }}" class="task-name anchor"
                         onclick="getCurrentTaskId(this)">{{ task.name }}</a>
                         <div class="edit-delete">
-                            <a href="#" class="font-size anchor" onclick="editTaskName('{{ task.id }}')">Edit</a>
-                            <a href="#" class="font-size delete-anchor" onclick="deleteTask('{{ task.id }}')">Delete</a>
+                            <a href="#" class="font-size anchor" onclick="editTaskName('{{ task.id }}')">&#128221;</a>
+                            <a href="#" class="font-size delete-anchor" onclick="deleteTask('{{ task.id }}')">&#128465;</a>
                         </div>
                     </div>
 
                     <div id="editing-{{ task.id }}" class="subtask-hidden">
-                        <input type="text" class="edit-input">
+                        <input type="text" class="edit-input" required>
                         <button class="save-button">Save</button>
                     </div>
                     <p class="date-interval">
@@ -43,10 +43,10 @@
                                 <label for="status-check-{{ subtask.id }}" id="subtask-name-{{ subtask.id }}"
                                 class="subtask-label {% if subtask.status %}completed{% endif %}">
                                 {{ subtask.name }}</label>
-                                <a class="anchor-s" href="#" onclick="editSubtaskName('{{ subtask.id }}')">Edit</a>
-                                <a class="anchor-s" href="#" onclick="deleteSubtask('{{ subtask.id }}')">Delete</a>
+                                <a class="anchor-s" href="#" onclick="editSubtaskName('{{ subtask.id }}')">&#128221;</a>
+                                <a class="anchor-s" href="#" onclick="deleteSubtask('{{ subtask.id }}')">&#128465;</a>
                                 <div id="editing-{{ subtask.id }}" class="subtask-hidden">
-                                    <input type="text" class="edit-input">
+                                    <input type="text" class="edit-input" required>
                                     <button class="save-button" onclick="saveTaskName('{{ subtask.id }}')">Save</button>
                                 </div>
                             </li>

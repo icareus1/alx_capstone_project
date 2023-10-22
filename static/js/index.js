@@ -232,7 +232,7 @@ function editSubtaskName(subtaskId) {
     const subtaskNameElement = document.querySelector(
         `#subtask-name-${subtaskId}`
     );
-    const subtaskNameText = subtaskNameElement.textContent;
+    const subtaskNameText = subtaskNameElement.textContent.trim();
 
     editInput.value = subtaskNameText;
 

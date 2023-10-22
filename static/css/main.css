@@ -57,11 +57,8 @@ nav #search-bar {
 
 nav #search-bar i {
     position: absolute;
-    top: 50%;
-}
-
-nav #search-bar i {
-    left: 20px;
+    top: 34%;
+    left: 10px;
     font-size: 30px;
     color: #707070;
     transform: translateY(-31%);
@@ -151,6 +148,7 @@ div.subtask-content .subtask-count{
 
 .task-name {
     font-size: 1.5rem;
+    flex-basis: 81%;
     color: var(--clr-dark)
 }
 
@@ -161,12 +159,12 @@ div.subtask-content .subtask-count{
     align-items: center;
 }
 
-.subtask-list li a {
-    padding-left: 1rem;
-}
-
 .subtask-list li label {
     flex-basis:60%;
+}
+
+a.font-size.delete-anchor {
+    padding-left: 1rem;
 }
 
 .disable,
@@ -223,7 +221,7 @@ div.subtask-content > * {
     font-size: 18px;
     font-weight: 400;
     border: none;
-    padding: .5rem 1rem 0 0;
+    padding: 0.5rem 0 0.72rem 0.5rem;
     background-color: transparent;
 }
 
