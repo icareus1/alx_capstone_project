@@ -147,7 +147,21 @@ function toggleT() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-        // When the page loads, retrieve and apply the state for the current task
+    // Get the date input element
+    const dueDateInput = document.getElementById("due-date");
+
+    // Get the current date in the format "yyyy-mm-dd"
+    const currentDate = new Date().toISOString().split("T")[0];
+
+    // Set the min attribute to the current date
+    dueDateInput.setAttribute("min", currentDate);
+
+    // Call the function to calculate and update remaining days
+    calculateRemainingDays();
+
+    updateRemainingSubtasks();
+
+    // When the page loads, retrieve and apply the state for the current task
     const currentTaskState = localStorage.getItem("currentTaskState");
     if (currentTaskState) {
         const { taskId } = JSON.parse(currentTaskState);
@@ -161,17 +175,7 @@ document.addEventListener("DOMContentLoaded", () => {
         lastActiveTask.classList.add("active-task");
     }
 
-    // Get the date input element
-    const dueDateInput = document.getElementById("due-date");
 
-    // Get the current date in the format "yyyy-mm-dd"
-    const currentDate = new Date().toISOString().split("T")[0];
-
-    // Set the min attribute to the current date
-    dueDateInput.setAttribute("min", currentDate);
-
-    // Call the function to calculate and update remaining days
-    calculateRemainingDays();
 });
 
 //Edit task
@@ -420,42 +424,42 @@ function calculateRemainingDays() {
 }
 
 function updateRemainingSubtasks() {
-  const tasks = document.querySelectorAll(".Task-container .task-list");
+    const tasks = document.querySelectorAll(".Task-container .task-list");
 
-  tasks.forEach((task) => {
-    const taskId = task
-      .querySelector(".task-name")
-      .getAttribute("data-task-id");
-    const subtaskContent = document.getElementById(`subtask-content-${taskId}`);
-    const subtasks = subtaskContent.querySelectorAll(".subtask-checkbox");
-    const totalSubtasks = subtasks.length;
-    let completedSubtasks = 0;
+    tasks.forEach((task) => {
+        const taskId = task
+        .querySelector(".task-name")
+        .getAttribute("data-task-id");
+        const subtaskContent = document.getElementById(`subtask-content-${taskId}`);
+        const subtasks = subtaskContent.querySelectorAll(".subtask-checkbox");
+        const totalSubtasks = subtasks.length;
+        let completedSubtasks = 0;
 
-    subtasks.forEach((subtask) => {
-      if (subtask.checked) {
-        completedSubtasks++;
-      }
+        subtasks.forEach((subtask) => {
+        if (subtask.checked) {
+            completedSubtasks++;
+        }
+        });
+
+        const remainingSubtasks = totalSubtasks - completedSubtasks;
+
+        // Display the number of remaining subtasks
+        const subtaskCountElement = subtaskContent.querySelector(".subtask-count");
+        const taskNameElement = task.querySelector(".task-name");
+        
+        if (subtaskCountElement) {
+        if (remainingSubtasks <= 1) {
+            subtaskCountElement.textContent = `${remainingSubtasks} Subtask remaining`;
+        } else {
+            subtaskCountElement.textContent = `${remainingSubtasks} Subtasks remaining`;
+        }
+        }
+
+        // Add or remove line-through based on remainingSubtasks
+        if (remainingSubtasks === 0) {
+        taskNameElement.style.textDecoration = "line-through";
+        } else {
+        taskNameElement.style.textDecoration = "none";
+        }
     });
-
-    const remainingSubtasks = totalSubtasks - completedSubtasks;
-
-    // Display the number of remaining subtasks
-    const subtaskCountElement = subtaskContent.querySelector(".subtask-count");
-    const taskNameElement = task.querySelector(".task-name");
-    
-    if (subtaskCountElement) {
-      if (remainingSubtasks <= 1) {
-        subtaskCountElement.textContent = `${remainingSubtasks} Subtask remaining`;
-      } else {
-        subtaskCountElement.textContent = `${remainingSubtasks} Subtasks remaining`;
-      }
-    }
-
-    // Add or remove line-through based on remainingSubtasks
-    if (remainingSubtasks === 0) {
-      taskNameElement.style.textDecoration = "line-through";
-    } else {
-      taskNameElement.style.textDecoration = "none";
-    }
-  });
 }
