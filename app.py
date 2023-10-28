@@ -4,6 +4,9 @@ from flask_login import login_user, current_user, logout_user, login_required
 from forms import RegistrationForm, LoginForm, RequestResetForm, ResetPasswordForm
 from models import db, login_manager, User, Task, Subtask
 from flask_mail import Mail, Message
+from apscheduler.triggers.date import DateTrigger
+from apscheduler.schedulers.background import BackgroundScheduler
+from datetime import datetime, timedelta
 from dotenv import load_dotenv
 import os
 import secrets
@@ -25,6 +28,8 @@ db.init_app(app)
 bcrypt = Bcrypt(app)
 login_manager.init_app(app)
 login_manager.login_view = 'login'
+
+scheduler = BackgroundScheduler()
 
 @app.route('/')
 @app.route('/landing')
@@ -214,7 +219,64 @@ def reset_token(token):
         return redirect(url_for('login'))
     return render_template('reset_token.html', title='Reset Password', form=form)
 
+# Email Notification
+def schedule_emails(task, scheduler):
+    reminders = [
+        ('1 day', -24),
+        ('1 hour', -1),
+        ('Time is up', 0)
+    ]
+    
+    current_time = datetime.utcnow()
+    
+    for reminder_name, offset_time in reminders:
+        trigger_time = task.due_date + timedelta(hours=offset_time)
+        
+        # Check if the trigger time is in the past
+        # if trigger_time < current_time:
+            # Send the email immediately
+            # send_email(task, reminder_name)
+            
+            # Skip sending the email if the trigger time is in the past
+            # continue
+        
+        # Schedule the email reminder
+        scheduler.add_job(send_email,
+                            trigger=DateTrigger(run_date=trigger_time),
+                            args=[task, reminder_name])
+
+def send_email(task, message):
+    sender_email = 'noreply@google.com'
+    receiver_email = task.user.email
+    subject = 'Task Reminder'
+    body = f'Task "{task.name}" is due in {message}.\n'
+    
+    if message == 'Time is up':
+        body += 'This task is now disabled and can only be deleted.'
+    
+    send_email_notification(sender_email, receiver_email, subject, body)
+
+def send_email_notification(sender, receiver, subject, body):
+    msg = Message(subject, sender=sender, recipients=[receiver])
+    msg.body = body
+    mail.send(msg)
+
+
+
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
+
+        # Get all tasks from the database and schedule email reminders for each task
+        tasks = Task.query.all()
+        for task in tasks:
+            schedule_emails(task, scheduler)
+        try:
+            scheduler.start()
+        finally:
+            if scheduler.running:
+                # Clear existing jobs from the scheduler
+                scheduler.remove_all_jobs()
+                scheduler.shutdown()
+
     app.run(host='localhost', port=5000, debug=True)

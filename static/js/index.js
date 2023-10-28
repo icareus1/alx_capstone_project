@@ -353,7 +353,6 @@ function clearSearch() {
     });
 }
 
-
 function calculateRemainingDays() {
     const tasks = document.querySelectorAll(".Task-container .task-list");
 
