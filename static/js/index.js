@@ -329,7 +329,7 @@ function deleteSubtask(subtaskId) {
 
 function searchTasks() {
     const searchMonthYear = document.getElementById("search-input").value;
-    const tasks = document.querySelectorAll(".Task-container .search");
+    const tasks = document.querySelectorAll(".Task-container .task-list");
 
     tasks.forEach((task) => {
         const creationDate = task
@@ -340,6 +340,7 @@ function searchTasks() {
         const taskMonthYear = `${year}-${String(month).padStart(2, "0")}`;
 
         task.style.display = taskMonthYear === searchMonthYear ? "block" : "none";
+        console.log(creationDate);
     });
     }
 
